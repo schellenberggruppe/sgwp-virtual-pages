@@ -33,8 +33,12 @@ class Controller implements ControllerContract
 	 */
 	function init(): void
 	{
-        $action = $_ENV['ACTION_ADD_PAGE'] ?: 'add_virtual_pages';
+        $action = 'add_virtual_pages';
 
+        if (array_key_exists('ACTION_ADD_PAGE', $_ENV)) {
+            $action = $_ENV['ACTION_ADD_PAGE'];
+        }
+        
 		do_action($action, $this);
 	}
 
